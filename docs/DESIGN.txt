@@ -1,0 +1,61 @@
+# Design
+
+This document records the main design and implementation decisions made while developing the project.
+
+## 1. Initial Scope
+
+The first version will include:
+- A finite grid
+- Standard Conway's Game of Life rules
+- Play and pause
+- Step through individual generations
+- Ability to toggle cells
+- Clear and reset controls
+- Adjustable simulation speed
+
+More advanced features such as an infinite grid, zooming, panning, and pattern loading may be added later.
+
+## 2. Technology
+
+### Language
+C++
+
+### Graphics
+SFML
+
+### Build System
+CMake
+
+## 3. Architecture
+
+The project will separate the simulation logic from rendering and user interaction.
+
+Planned structure:
+
+- `GameOfLife` — stores the grid and handles simulation rules
+- `Renderer` — displays the grid
+- `Application` — handles the window, input, and simulation timing
+
+This allows the Game of Life logic to work independently of the graphical interface.
+
+## 4. Grid Representation
+
+Initial implementation:
+`std::vector<std::vector<bool>>`
+
+This was chosen because it is simple to understand and implement.
+
+A flat array may be considered later if performance becomes important.
+
+## 5. Simulation
+
+Each generation will be calculated using two grids:
+
+- Current grid
+- Next grid
+
+The next generation must be calculated without modifying the current generation because all cells in a generation are updated simultaneously.
+
+## 6. Decisions / Changes
+
+Major design changes made during development will be recorded here.
